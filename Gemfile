@@ -58,7 +58,8 @@ group :test do
   gem 'chromedriver-helper'
 
   # Optimizing Tests
-  gem 'minitest-colorize'
+  gem 'minitest'
+  gem 'minitest-reporters'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
