@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'minitest/autorun'
 
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   test "should get home as root url" do
@@ -11,7 +10,6 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     get about_url
     assert_response :success
   end
-
 
   test "should get contact" do
     get contact_url
