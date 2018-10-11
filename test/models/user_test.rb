@@ -45,4 +45,9 @@ class UserTest < ActiveSupport::TestCase
     @user.date_of_birth = Date.today
     assert_not @user.valid?
   end
+
+  test "gender should be male, female or other" do
+    @user.gender = "Nothing"
+    assert_not @user.valid?
+  end
 end

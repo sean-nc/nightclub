@@ -9,7 +9,8 @@ class User < ApplicationRecord
   validates :date_of_birth, presence: :true
   validates :location, presence: :true
   validates :mobile, presence: :true
-  validates :gender, presence: :true
+  validates :gender, presence: :true,
+            inclusion: { in: %w(Male Female Other) , message: "%{value} is not a valid gender" }
   validate :validate_age
 
   attr_writer :login
