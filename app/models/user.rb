@@ -6,7 +6,11 @@ class User < ApplicationRecord
   validates :username, presence: :true, uniqueness: { case_sensitive: false }
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
   validate :validate_username
-
+  validates :date_of_birth, presence: :true
+  validates :location, presence: :true
+  validates :mobile, presence: :true
+  validates :gender, presence: :true
+  validate :validate_age
 
   attr_writer :login
 
@@ -30,6 +34,12 @@ class User < ApplicationRecord
   def validate_username
     if User.where(email: username).exists?
       errors.add(:username, :invalid)
+    end
+  end
+
+  def validate_age
+    if date_of_birth.present? && date_of_birth > Date.today - 18.years
+      errors.add(:date_of_birth, "Sorry, you are not old enough")
     end
   end
 end
